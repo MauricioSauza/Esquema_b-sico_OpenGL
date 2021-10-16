@@ -1,0 +1,9 @@
+E:\2 - 2021\Gráfica\Casa\Casa\bin\Debug\Casa.exe
+E:\2 - 2021\Gráfica\Casa\Casa\bin\Debug\Casa.pdb
+E:\2 - 2021\Gráfica\Casa\Casa\bin\Debug\OpenTK.dll
+E:\2 - 2021\Gráfica\Casa\Casa\bin\Debug\OpenTK.pdb
+E:\2 - 2021\Gráfica\Casa\Casa\bin\Debug\OpenTK.xml
+E:\2 - 2021\Gráfica\Casa\Casa\obj\Debug\Casa.csproj.AssemblyReference.cache
+E:\2 - 2021\Gráfica\Casa\Casa\obj\Debug\Casa.csproj.CoreCompileInputs.cache
+E:\2 - 2021\Gráfica\Casa\Casa\obj\Debug\Casa.exe
+E:\2 - 2021\Gráfica\Casa\Casa\obj\Debug\Casa.pdb
