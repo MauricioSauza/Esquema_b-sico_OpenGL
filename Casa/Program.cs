@@ -10,7 +10,8 @@ namespace Casa
         static void Main(string[] args)
         {
             GameWindow window = new GameWindow(800, 600);
-            Game gm = new Game(window);
+            Game game = new Game(800, 600, "Drawing a House");
+            game.Run(60.0);
         }
     }
 }

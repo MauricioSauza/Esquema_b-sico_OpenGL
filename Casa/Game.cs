@@ -2,46 +2,56 @@
 using System.Collections.Generic;
 using System.Text;
 using OpenTK;
+using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
 namespace Casa
 {
-    class Game 
+    public class Game : GameWindow
     {
-        GameWindow window;
-        public Game(GameWindow window)
+        float largo = 80;
+        float alto = 80;
+        float ancho = 120;
+       public Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
-            this.window = window;
-            Start();
+
         }
-        public void Start()
+
+        protected override void OnLoad(EventArgs e)
         {
-            window.Load += loaded;
-            window.Resize += resize;
-            window.RenderFrame += renderF;
-            window.Run();
-        }
-        public void resize(object o, EventArgs e)
-        {
-            GL.Viewport(0, 0, window.Width, window.Height);
+            int oSize = 300;
+            GL.ClearColor(Color4.Black);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            GL.Ortho(0.0, 50.0, 0.0, 50.0, -1.0, 1.0);
+            GL.Ortho(-oSize, oSize, -oSize, oSize, -oSize, oSize);
+            base.OnLoad(e);
+        }
+
+        protected override void OnRenderFrame(FrameEventArgs e)
+        {
+            GL.Enable(EnableCap.DepthTest);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.Rotate(140, 0, 1, 0.2);
+            
+
+            Home home = new Home(new Vector3(0, 0, 0), largo, alto, ancho);
+            home.draw();
+            SwapBuffers();
+            base.OnRenderFrame(e);
         }
-        public void renderF(object o, EventArgs e)
+
+        protected override void OnUpdateFrame(FrameEventArgs e)
         {
-            GL.Clear(ClearBufferMask.ColorBufferBit);
-            GL.Begin(BeginMode.Triangles);
-            GL.Vertex2(1.0, 1.0);
-            GL.Vertex2(49.0, 1.0);
-            GL.Vertex2(25.0, 49.0);
-            GL.End();
-            window.SwapBuffers();
+            //GL.Rotate(1, 0.0f, 1f, 0.0f);
+            base.OnUpdateFrame(e);
         }
-        public void loaded(object o, EventArgs e)
+
+        protected override void OnResize(EventArgs e)
         {
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            GL.Viewport(0, 0, Width, Height);
+            base.OnResize(e);
         }
     }
 }
